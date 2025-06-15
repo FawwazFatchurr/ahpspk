@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHP Calculator - Analytical Hierarchy Process</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AHP Calculator</h1>
+            <p>Analytical Hierarchy Process - Sistem Pendukung Keputusan</p>
+        </div>
+
+        <div class="content">
+            <!-- Step 1: Input Kriteria -->
+            <div class="step">
+                <h2><span class="step-number">1</span>Input Kriteria</h2>
+                <div class="input-group">
+                    <label for="criteriaInput">Masukkan Nama Kriteria:</label>
+                    <input type="text" id="criteriaInput">
+                </div>
+                <button class="btn" onclick="addCriteria()">Tambah Kriteria</button>
+                <div class="criteria-list" id="criteriaList"></div>
+            </div>
+
+            <!-- Step 2: Input Alternatif -->
+            <div class="step">
+                <h2><span class="step-number">2</span>Input Alternatif</h2>
+                <div class="input-group">
+                    <label for="alternativeInput">Masukkan Nama Alternatif:</label>
+                    <input type="text" id="alternativeInput">
+                </div>
+                <button class="btn" onclick="addAlternative()">Tambah Alternatif</button>
+                <div class="alternatives-list" id="alternativesList"></div>
+            </div>
+
+            <!-- Step 3: Matriks Perbandingan Kriteria -->
+            <div class="step" id="criteriaMatrixStep">
+                <h2><span class="step-number">3</span>Matriks Perbandingan Kriteria</h2>
+                <p>Bandingkan setiap pasang kriteria. Pilih kriteria mana yang lebih penting dan seberapa penting.</p>
+                
+                <div class="scale-reference">
+                    <h4>Skala Perbandingan AHP:</h4>
+                    <div class="scale-item"><span><strong>1/9</strong></span><span>Mutlak kurang penting</span></div>
+                    <div class="scale-item"><span><strong>1/7</strong></span><span>Sangat kurang penting</span></div>
+                    <div class="scale-item"><span><strong>1/5</strong></span><span>Kurang penting</span></div>
+                    <div class="scale-item"><span><strong>1/3</strong></span><span>Sedikit kurang penting</span></div>
+                    <div class="scale-item"><span><strong>1</strong></span><span>Sama penting</span></div>
+                    <div class="scale-item"><span><strong>3</strong></span><span>Sedikit lebih penting</span></div>
+                    <div class="scale-item"><span><strong>5</strong></span><span>Lebih penting</span></div>
+                    <div class="scale-item"><span><strong>7</strong></span><span>Sangat lebih penting</span></div>
+                    <div class="scale-item"><span><strong>9</strong></span><span>Mutlak lebih penting</span></div>
+                    <div class="scale-item"><span><strong>2, 4, 6, 8</strong></span><span>Nilai untuk ditengah-tengah</span></div>
+                </div>
+
+                <div class="matrix-container">
+                    <table class="matrix-table" id="criteriaMatrix"></table>
+                </div>
+                <button class="btn" onclick="calculateCriteriaWeights()">Hitung Bobot Kriteria</button>
+                <div id="criteriaWeights"></div>
+            </div>
+
+            <!-- Step 4: Matriks Perbandingan Alternatif -->
+            <div class="step" id="alternativeMatrixStep">
+                <h2><span class="step-number">4</span>Matriks Perbandingan Alternatif</h2>
+                <p>Untuk setiap kriteria, bandingkan alternatif-alternatif yang ada.</p>
+                <div id="alternativeMatrices"></div>
+            </div>
+
+            <!-- Step 5: Hasil Akhir -->
+            <div class="step" id="finalResultsStep">
+                <h2><span class="step-number">5</span>Hasil Akhir</h2>
+                <button class="btn" onclick="calculateFinalResults()">Hitung Hasil Akhir</button>
+                <div class="results-section" id="finalResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
